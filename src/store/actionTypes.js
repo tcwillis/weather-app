@@ -1,0 +1,6 @@
+export const API_ACTION = "API_ACTION";
+
+export const WEATHER = "WEATHER";
+export const WEATHER_REQUESTED = "WEATHER_REQUESTED";
+export const WEATHER_RECEIVED = "WEATHER_RECEIVED";
+export const WEATHER_FAILED = "WEATHER_FAILED";
