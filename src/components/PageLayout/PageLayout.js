@@ -3,7 +3,7 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import { Container } from "@material-ui/core";
 
-const Layout = ({ children }) => {
+const PageLayout = ({ children }) => {
   return (
     <div className={"main"}>
       <Header />
@@ -13,4 +13,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default PageLayout;

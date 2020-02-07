@@ -10,6 +10,15 @@ app.get("/status", function(req, res) {
   return res.status(200).send("server running");
 });
 
+router.route("/location").get(async function(req, res) {
+  console.log(req.query);
+  const response = await fetch(
+    `https://www.metaweather.com/api/location/search/?query=${req.query.city}`
+  );
+  const result = await response.json();
+  res.json(result);
+});
+
 router.route("/weather").get(async function(req, res) {
   const response = await fetch(
     "https://www.metaweather.com/api/location/44418/"
