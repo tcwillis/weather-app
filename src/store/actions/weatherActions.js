@@ -20,6 +20,7 @@ const shouldFetchWeather = state => {
 };
 
 export const fetchWeatherIfNeeded = () => {
+  console.log("sdefsdfsdf");
   return (dispatch, getState) => {
     if (shouldFetchWeather(getState())) {
       return dispatch(getWeather());
