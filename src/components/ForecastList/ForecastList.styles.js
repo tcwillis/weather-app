@@ -24,10 +24,10 @@ export const ForecastTile = styled(({ ...rest }) => <Box {...rest} />)`
   ${({ theme: { spacing, breakpoints } }) =>
     css`
       padding: 0 ${spacing(2)}px;
-      border: solid 1px #efefef;
 
       ${breakpoints.up("md")} {
         padding: 0 ${spacing(4)}px;
+        border: solid 1px #efefef;
       }
     `};
 `;
@@ -61,6 +61,7 @@ export const Temperature = styled(({ ...rest }) => <Grid item {...rest} />)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: ${({ theme }) => `0 ${theme.spacing(1)}px`};
 `;
 
 export const MinTemp = styled("span")`

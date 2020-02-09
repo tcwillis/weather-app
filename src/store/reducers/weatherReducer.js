@@ -1,10 +1,12 @@
 import {
   WEATHER_RECEIVED,
   WEATHER_REQUESTED,
-  WEATHER_FAILED
+  WEATHER_FAILED,
+  SELECT_UNITS
 } from "store/actionTypes";
 
 import { transformWeather } from "utils/transformWeather";
+import { transformUnits } from "utils/transformUnits";
 
 const INITIAL_STATE = {
   list: [],
@@ -32,6 +34,13 @@ function weather(state = INITIAL_STATE, action) {
         ...state,
         isFetchingData: false,
         error: action.payload
+      };
+
+    case SELECT_UNITS:
+      return {
+        ...state,
+        units: action.payload,
+        list: transformUnits(state.list, action.payload)
       };
 
     default:

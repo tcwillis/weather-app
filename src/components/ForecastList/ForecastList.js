@@ -20,8 +20,14 @@ const ForecastList = ({ data }) => {
               <DayTitle>{day.day}</DayTitle>
               <WeatherImage src={day.image} alt={`${day.state} logo`} />
               <Temperature>
-                <MaxTemp>{day.maxTemp}</MaxTemp>
-                <MinTemp>{day.minTemp}</MinTemp>
+                <MaxTemp>
+                  {day.maxTemp}
+                  {"\u00b0"}
+                </MaxTemp>
+                <MinTemp>
+                  {day.minTemp}
+                  {"\u00b0"}
+                </MinTemp>
               </Temperature>
             </ContentWrapper>
           </ForecastTile>
