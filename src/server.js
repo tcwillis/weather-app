@@ -10,8 +10,15 @@ app.get("/status", function(req, res) {
   return res.status(200).send("server running");
 });
 
-router.route("/location").get(async function(req, res) {
-  console.log(req.query);
+router.route("/locations/latlon").get(async function(req, res) {
+  const response = await fetch(
+    `https://www.metaweather.com/api/location/search/?lattlong=${req.query.latt},${req.query.long}`
+  );
+  const result = await response.json();
+  res.json(result);
+});
+
+router.route("/locations/city").get(async function(req, res) {
   const response = await fetch(
     `https://www.metaweather.com/api/location/search/?query=${req.query.city}`
   );
@@ -21,7 +28,7 @@ router.route("/location").get(async function(req, res) {
 
 router.route("/weather").get(async function(req, res) {
   const response = await fetch(
-    "https://www.metaweather.com/api/location/44418/"
+    `https://www.metaweather.com/api/location/${req.query.id}/`
   );
   const result = await response.json();
   res.json(result);

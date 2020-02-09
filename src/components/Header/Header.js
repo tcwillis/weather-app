@@ -1,17 +1,15 @@
 import React from "react";
-import { AppBar, Toolbar } from "@material-ui/core";
-import logo from "assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Container, Box, Typography } from "@material-ui/core";
 
 const Header = () => {
   return (
     <>
       <AppBar position={"fixed"} color="default" data-ref={"header"}>
-        <Toolbar p={2}>
-          <Link to="/">
-            <img width="130" alt="logo" src={logo} />
-          </Link>
-        </Toolbar>
+        <Container>
+          <Box py={2}>
+            <Typography variant={"h5"}>Weather App</Typography>
+          </Box>
+        </Container>
       </AppBar>
       <Toolbar />
     </>

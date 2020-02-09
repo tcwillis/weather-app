@@ -1,34 +1,22 @@
-import { WEATHER, LOCATIONS } from "../actionTypes";
+import { WEATHER } from "../actionTypes";
 import { apiAction } from "./apiActions";
 import lodashGet from "lodash.get";
 
-const getWeather = () =>
+const getWeather = id =>
   apiAction({
     type: WEATHER,
-    endpoint: "/weather"
-  });
-
-export const getLocations = query =>
-  apiAction({
-    type: LOCATIONS,
-    endpoint: "/location",
+    endpoint: "/weather",
     params: {
-      city: query
+      id
     }
   });
 
-const shouldFetchWeather = state => {
-  const weather = lodashGet(state, "weather.list");
-  if (weather && weather.isFetchingData) {
-    return false;
-  }
-  return true;
-};
-
-export const fetchWeatherIfNeeded = () => {
+export const fetchWeather = id => {
   return (dispatch, getState) => {
-    if (shouldFetchWeather(getState())) {
-      return dispatch(getWeather());
+    const weather = lodashGet(getState(), "weather.list");
+
+    if (weather && !weather.isFetchingData && id) {
+      return dispatch(getWeather(id));
     }
   };
 };

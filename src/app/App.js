@@ -4,20 +4,23 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import configureStore, { history } from "store";
 import routes from "./routes";
+import ThemeProvider from "context/ThemeProvider";
 
 const store = configureStore();
 
 function App() {
   return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route key={index} {...route} />
-          ))}
-        </Switch>
-      </ConnectedRouter>
-    </Provider>
+    <ThemeProvider>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route key={index} {...route} />
+            ))}
+          </Switch>
+        </ConnectedRouter>
+      </Provider>
+    </ThemeProvider>
   );
 }
 

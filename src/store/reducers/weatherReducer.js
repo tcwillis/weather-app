@@ -1,51 +1,33 @@
 import {
   WEATHER_RECEIVED,
   WEATHER_REQUESTED,
-  WEATHER_FAILED,
-  LOCATIONS_RECEIVED,
-  LOCATIONS_REQUESTED,
-  LOCATIONS_FAILED
+  WEATHER_FAILED
 } from "store/actionTypes";
+
+import { transformWeather } from "utils/transformWeather";
 
 const INITIAL_STATE = {
   list: [],
   error: null,
   isFetchingData: false,
-  locations: []
+  units: "metric"
 };
 
 function weather(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case WEATHER_RECEIVED:
-      return {
-        ...state,
-        list: action.payload,
-        isFetchingData: false
-      };
     case WEATHER_REQUESTED:
       return {
         ...state,
         isFetchingData: true
       };
-    case WEATHER_FAILED:
+    case WEATHER_RECEIVED:
       return {
         ...state,
-        isFetchingData: false,
-        error: action.payload
-      };
-
-    case LOCATIONS_RECEIVED:
-      return {
-        ...state,
-        locations: action.payload,
+        list: transformWeather(action.payload, state.units),
         isFetchingData: false
       };
-    case LOCATIONS_REQUESTED:
-      return {
-        ...state,
-        isFetchingData: true
-      };
-    case LOCATIONS_FAILED:
+
+    case WEATHER_FAILED:
       return {
         ...state,
         isFetchingData: false,

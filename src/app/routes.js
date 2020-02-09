@@ -1,11 +1,11 @@
-import Home from "views/Home";
+import WeatherSearch from "views/WeatherSearch";
 import NotFound from "views/NotFound";
 
 export default [
   {
     path: "/",
     exact: true,
-    component: Home
+    component: WeatherSearch
   },
   {
     path: "*",
