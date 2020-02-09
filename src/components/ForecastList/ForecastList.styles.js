@@ -23,7 +23,7 @@ export default styled(({ ...rest }) => (
 export const ForecastTile = styled(({ ...rest }) => <Box {...rest} />)`
   ${({ theme: { spacing, breakpoints } }) =>
     css`
-      padding: 0 ${spacing(2)}px;
+      padding: 0 ${spacing(1)}px;
 
       ${breakpoints.up("md")} {
         padding: 0 ${spacing(4)}px;

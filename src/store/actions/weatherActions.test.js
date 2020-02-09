@@ -1,15 +1,15 @@
 import configureMockStore from "redux-mock-store";
 import middlewares from "../middleware";
-import { fetchWeatherIfNeeded } from "./weatherActions";
+import { fetchWeather } from "./weatherActions";
 import { WEATHER_REQUESTED } from "../actionTypes";
 
 const mockStore = configureMockStore(middlewares);
 
 describe("Weather actions", () => {
-  it("should dispatch a REQUEST if there is no weather data in the store", () => {
+  it("should dispatch a REQUEST if no fetch is in progress and the city ID is passed", () => {
     const expectedActions = [{ type: WEATHER_REQUESTED }];
-    const store = mockStore({ weather: { list: [] } });
-    store.dispatch(fetchWeatherIfNeeded());
+    const store = mockStore({ weather: { list: [], isFetchingData: false } });
+    store.dispatch(fetchWeather("123456"));
 
     expect(store.getActions()).toEqual(expectedActions);
   });
@@ -18,16 +18,16 @@ describe("Weather actions", () => {
     const store = mockStore({
       weather: { isFetchingData: true, list: [{ id: 1 }] }
     });
-    store.dispatch(fetchWeatherIfNeeded());
+    store.dispatch(fetchWeather("123456"));
 
     expect(store.getActions()).toEqual([]);
   });
 
-  it("should not dispatch a REQUEST if weather data is in the store", () => {
+  it("should not dispatch a REQUEST if weaher ID is not passed", () => {
     const store = mockStore({
-      weather: { isFetchingData: false, list: [{ id: 1 }] }
+      weather: { isFetchingData: true, list: [{ id: 1 }] }
     });
-    store.dispatch(fetchWeatherIfNeeded());
+    store.dispatch(fetchWeather());
 
     expect(store.getActions()).toEqual([]);
   });

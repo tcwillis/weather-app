@@ -12,7 +12,7 @@ import StyledTodayWeather, {
   Units
 } from "./TodayWeather.styles";
 
-const ForecastList = ({
+const TodayWeather = ({
   title,
   currentTemp,
   image,
@@ -49,12 +49,18 @@ const ForecastList = ({
   );
 };
 
-ForecastList.defaultProps = {
-  data: []
+TodayWeather.propTypes = {
+  title: PropTypes.string,
+  currentTemp: PropTypes.number,
+  image: PropTypes.string,
+  state: PropTypes.string,
+  date: PropTypes.string,
+  day: PropTypes.string,
+  humidity: PropTypes.number,
+  windSpeed: PropTypes.number,
+  windDirection: PropTypes.string,
+  degreesUnits: PropTypes.string,
+  speedUnits: PropTypes.string
 };
 
-ForecastList.propTypes = {
-  data: PropTypes.array
-};
-
-export default ForecastList;
+export default TodayWeather;
