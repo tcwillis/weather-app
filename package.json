@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "concurrently": "^5.1.0",
     "connected-react-router": "^6.6.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash.get": "^4.4.2",
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
